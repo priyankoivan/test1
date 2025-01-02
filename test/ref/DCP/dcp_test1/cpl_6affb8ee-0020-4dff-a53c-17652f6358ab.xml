@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompositionPlaylist xmlns="http://www.smpte-ra.org/schemas/429-7/2006/CPL">
+  <Id>urn:uuid:6affb8ee-0020-4dff-a53c-17652f6358ab</Id>
+  <AnnotationText>A Test DCP</AnnotationText>
+  <IssueDate>2012-07-17T04:45:18+00:00</IssueDate>
+  <Issuer>OpenDCP 0.0.25</Issuer>
+  <Creator>OpenDCP 0.0.25</Creator>
+  <ContentTitleText>A Test DCP</ContentTitleText>
+  <ContentKind>trailer</ContentKind>
+  <ContentVersion>
+    <Id>urn:uuid:75ac29aa-42ac-1234-ecae-49251abefd11</Id>
+    <LabelText>content-version-label-text</LabelText>
+  </ContentVersion>
+  <RatingList/>
+  <ReelList>
+    <Reel>
+      <Id>urn:uuid:d1102bfd-65c2-465c-ab33-200ace46fcf5</Id>
+      <AssetList>
+        <MainMarkers>
+          <Id>urn:uuid:3b198cbc-c1d2-4410-805c-397b6fea0297</Id>
+          <EditRate>24 1</EditRate>
+          <IntrinsicDuration>24</IntrinsicDuration>
+          <MarkerList>
+            <Marker>
+              <Label>FFOC</Label>
+              <Offset>1</Offset>
+            </Marker>
+            <Marker>
+              <Label>LFOC</Label>
+              <Offset>23</Offset>
+            </Marker>
+          </MarkerList>
+        </MainMarkers>
+        <MainPicture>
+          <Id>urn:uuid:5407b210-4441-4e97-8b16-8bdc7c12da54</Id>
+          <EditRate>24 1</EditRate>
+          <IntrinsicDuration>24</IntrinsicDuration>
+          <EntryPoint>0</EntryPoint>
+          <Duration>24</Duration>
+          <Hash>wUmt8G+cFFKMGt0ueS9+F1S4uhc=</Hash>
+          <FrameRate>24 1</FrameRate>
+          <ScreenAspectRatio>1998 1080</ScreenAspectRatio>
+        </MainPicture>
+        <MainSound>
+          <Id>urn:uuid:97f0f352-5b77-48ee-a558-9df37717f4fa</Id>
+          <EditRate>24 1</EditRate>
+          <IntrinsicDuration>24</IntrinsicDuration>
+          <EntryPoint>0</EntryPoint>
+          <Duration>24</Duration>
+          <Hash>KcJb7S2K5cNm8RG4kfQD5FTeS0A=</Hash>
+        </MainSound>
+        <meta:CompositionMetadataAsset xmlns:meta="http://www.smpte-ra.org/schemas/429-16/2014/CPL-Metadata">
+          <Id>urn:uuid:dd015243-ab77-435c-a13d-690566885121</Id>
+          <EditRate>24 1</EditRate>
+          <IntrinsicDuration>24</IntrinsicDuration>
+          <meta:FullContentTitleText/>
+          <meta:VersionNumber>1</meta:VersionNumber>
+          <meta:MainSoundConfiguration>51/L,R,C,LFE,Ls,Rs</meta:MainSoundConfiguration>
+          <meta:MainSoundSampleRate>48000 1</meta:MainSoundSampleRate>
+          <meta:MainPictureStoredArea>
+            <meta:Width>1998</meta:Width>
+            <meta:Height>1080</meta:Height>
+          </meta:MainPictureStoredArea>
+          <meta:MainPictureActiveArea>
+            <meta:Width>1998</meta:Width>
+            <meta:Height>1080</meta:Height>
+          </meta:MainPictureActiveArea>
+          <meta:ExtensionMetadataList>
+            <meta:ExtensionMetadata scope="http://isdcf.com/ns/cplmd/app">
+              <meta:Name>Application</meta:Name>
+              <meta:PropertyList>
+                <meta:Property>
+                  <meta:Name>DCP Constraints Profile</meta:Name>
+                  <meta:Value>SMPTE-RDD-52:2020-Bv2.1</meta:Value>
+                </meta:Property>
+              </meta:PropertyList>
+            </meta:ExtensionMetadata>
+          </meta:ExtensionMetadataList>
+          <mca:MCASubDescriptors xmlns:mca="http://isdcf.com/ns/cplmd/mca" xmlns:r0="http://www.smpte-ra.org/reg/395/2014/13/1/aaf" xmlns:r1="http://www.smpte-ra.org/reg/335/2012">
+            <r0:SoundfieldGroupLabelSubDescriptor>
+              <r1:InstanceID>urn:uuid:6b06fecc-09d7-4b70-b1ae-16b274cb8b25</r1:InstanceID>
+              <r1:MCALabelDictionaryID>urn:smpte:ul:060e2b34.0401010d.03020201.00000000</r1:MCALabelDictionaryID>
+              <r1:MCALinkID>urn:uuid:ddedca3d-a323-4355-a879-029bb90e9d1e</r1:MCALinkID>
+              <r1:MCATagSymbol>sg51</r1:MCATagSymbol>
+              <r1:MCATagName>5.1</r1:MCATagName>
+              <r1:RFC5646SpokenLanguage>en-US</r1:RFC5646SpokenLanguage>
+            </r0:SoundfieldGroupLabelSubDescriptor>
+            <r0:AudioChannelLabelSubDescriptor>
+              <r1:InstanceID>urn:uuid:07cc8cb6-9385-4e33-aa38-bdcbf3a67698</r1:InstanceID>
+              <r1:MCALabelDictionaryID>urn:smpte:ul:060e2b34.0401010d.03020101.00000000</r1:MCALabelDictionaryID>
+              <r1:MCALinkID>urn:uuid:67729deb-ce1f-46be-bd03-e674afa35c36</r1:MCALinkID>
+              <r1:MCATagSymbol>chL</r1:MCATagSymbol>
+              <r1:MCATagName>Left</r1:MCATagName>
+              <r1:MCAChannelID>1</r1:MCAChannelID>
+              <r1:RFC5646SpokenLanguage>en-US</r1:RFC5646SpokenLanguage>
+              <r1:SoundfieldGroupLinkID>urn:uuid:ddedca3d-a323-4355-a879-029bb90e9d1e</r1:SoundfieldGroupLinkID>
+            </r0:AudioChannelLabelSubDescriptor>
+            <r0:AudioChannelLabelSubDescriptor>
+              <r1:InstanceID>urn:uuid:d98861e8-aefc-433d-9e96-1745e7ba039e</r1:InstanceID>
+              <r1:MCALabelDictionaryID>urn:smpte:ul:060e2b34.0401010d.03020102.00000000</r1:MCALabelDictionaryID>
+              <r1:MCALinkID>urn:uuid:bc213c26-3e3f-488e-a99d-d9d0ad30f8f9</r1:MCALinkID>
+              <r1:MCATagSymbol>chR</r1:MCATagSymbol>
+              <r1:MCATagName>Right</r1:MCATagName>
+              <r1:MCAChannelID>2</r1:MCAChannelID>
+              <r1:RFC5646SpokenLanguage>en-US</r1:RFC5646SpokenLanguage>
+              <r1:SoundfieldGroupLinkID>urn:uuid:ddedca3d-a323-4355-a879-029bb90e9d1e</r1:SoundfieldGroupLinkID>
+            </r0:AudioChannelLabelSubDescriptor>
+            <r0:AudioChannelLabelSubDescriptor>
+              <r1:InstanceID>urn:uuid:d76fdaaf-8316-42dc-a87e-1719ad6ca3ca</r1:InstanceID>
+              <r1:MCALabelDictionaryID>urn:smpte:ul:060e2b34.0401010d.03020103.00000000</r1:MCALabelDictionaryID>
+              <r1:MCALinkID>urn:uuid:8577c7c0-be29-4eb5-a449-1e3870a42bbd</r1:MCALinkID>
+              <r1:MCATagSymbol>chC</r1:MCATagSymbol>
+              <r1:MCATagName>Center</r1:MCATagName>
+              <r1:MCAChannelID>3</r1:MCAChannelID>
+              <r1:RFC5646SpokenLanguage>en-US</r1:RFC5646SpokenLanguage>
+              <r1:SoundfieldGroupLinkID>urn:uuid:ddedca3d-a323-4355-a879-029bb90e9d1e</r1:SoundfieldGroupLinkID>
+            </r0:AudioChannelLabelSubDescriptor>
+            <r0:AudioChannelLabelSubDescriptor>
+              <r1:InstanceID>urn:uuid:7a150034-0437-46d1-843c-864baf57adbf</r1:InstanceID>
+              <r1:MCALabelDictionaryID>urn:smpte:ul:060e2b34.0401010d.03020104.00000000</r1:MCALabelDictionaryID>
+              <r1:MCALinkID>urn:uuid:76aef948-ca63-4d4a-b707-27727c55d370</r1:MCALinkID>
+              <r1:MCATagSymbol>chLFE</r1:MCATagSymbol>
+              <r1:MCATagName>LFE</r1:MCATagName>
+              <r1:MCAChannelID>4</r1:MCAChannelID>
+              <r1:RFC5646SpokenLanguage>en-US</r1:RFC5646SpokenLanguage>
+              <r1:SoundfieldGroupLinkID>urn:uuid:ddedca3d-a323-4355-a879-029bb90e9d1e</r1:SoundfieldGroupLinkID>
+            </r0:AudioChannelLabelSubDescriptor>
+            <r0:AudioChannelLabelSubDescriptor>
+              <r1:InstanceID>urn:uuid:5668a4e3-2941-40a5-826e-c47d228239e9</r1:InstanceID>
+              <r1:MCALabelDictionaryID>urn:smpte:ul:060e2b34.0401010d.03020105.00000000</r1:MCALabelDictionaryID>
+              <r1:MCALinkID>urn:uuid:cbeeef80-f3bc-4407-bd4b-2e546fea6945</r1:MCALinkID>
+              <r1:MCATagSymbol>chLs</r1:MCATagSymbol>
+              <r1:MCATagName>Left Surround</r1:MCATagName>
+              <r1:MCAChannelID>5</r1:MCAChannelID>
+              <r1:RFC5646SpokenLanguage>en-US</r1:RFC5646SpokenLanguage>
+              <r1:SoundfieldGroupLinkID>urn:uuid:ddedca3d-a323-4355-a879-029bb90e9d1e</r1:SoundfieldGroupLinkID>
+            </r0:AudioChannelLabelSubDescriptor>
+            <r0:AudioChannelLabelSubDescriptor>
+              <r1:InstanceID>urn:uuid:b04ce7c7-3f9f-45c2-b70c-a0f2cafbe391</r1:InstanceID>
+              <r1:MCALabelDictionaryID>urn:smpte:ul:060e2b34.0401010d.03020106.00000000</r1:MCALabelDictionaryID>
+              <r1:MCALinkID>urn:uuid:ce0f527a-a71e-4b60-a5ab-da9d6dd7882e</r1:MCALinkID>
+              <r1:MCATagSymbol>chRs</r1:MCATagSymbol>
+              <r1:MCATagName>Right Surround</r1:MCATagName>
+              <r1:MCAChannelID>6</r1:MCAChannelID>
+              <r1:RFC5646SpokenLanguage>en-US</r1:RFC5646SpokenLanguage>
+              <r1:SoundfieldGroupLinkID>urn:uuid:ddedca3d-a323-4355-a879-029bb90e9d1e</r1:SoundfieldGroupLinkID>
+            </r0:AudioChannelLabelSubDescriptor>
+          </mca:MCASubDescriptors>
+        </meta:CompositionMetadataAsset>
+      </AssetList>
+    </Reel>
+  </ReelList>
+</CompositionPlaylist>

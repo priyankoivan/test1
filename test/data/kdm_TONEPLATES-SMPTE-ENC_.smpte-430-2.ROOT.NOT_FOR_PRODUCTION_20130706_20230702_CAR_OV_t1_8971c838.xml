@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DCinemaSecurityMessage xmlns="http://www.smpte-ra.org/schemas/430-3/2006/ETM" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:enc="http://www.w3.org/2001/04/xmlenc#">
+  <AuthenticatedPublic Id="ID_AuthenticatedPublic">
+    <MessageId>urn:uuid:51389295-3fed-41a5-9cdf-7de42d7e32c7</MessageId>
+    <MessageType>http://www.smpte-ra.org/430-1/2006/KDM#kdm-key-type</MessageType>
+    <AnnotationText>cinemaslides 2022-12-22T21:02:54+01:00</AnnotationText>
+    <IssueDate>2022-12-22T21:02:54+01:00</IssueDate>
+    <Signer>
+      <ds:X509IssuerName>dnQualifier=enjbKYhZ9JszBVjy71Lg9QrYmV4=,CN=.smpte-430-2.INTERMEDIATE.NOT_FOR_PRODUCTION,OU=example.org,O=example.org</ds:X509IssuerName>
+      <ds:X509SerialNumber>7</ds:X509SerialNumber>
+    </Signer>
+    <RequiredExtensions>
+      <KDMRequiredExtensions xmlns="http://www.smpte-ra.org/schemas/430-1/2006/KDM">
+        <Recipient>
+          <X509IssuerSerial>
+            <ds:X509IssuerName>dnQualifier=enjbKYhZ9JszBVjy71Lg9QrYmV4=,CN=.smpte-430-2.INTERMEDIATE.NOT_FOR_PRODUCTION,OU=example.org,O=example.org</ds:X509IssuerName>
+            <ds:X509SerialNumber>7</ds:X509SerialNumber>
+          </X509IssuerSerial>
+          <X509SubjectName>dnQualifier=MekIXGBkYdh28siMnnF/Zs2JeK8=,CN=CS.smpte-430-2.LEAF.NOT_FOR_PRODUCTION,OU=example.org,O=example.org</X509SubjectName>
+        </Recipient>
+        <CompositionPlaylistId>urn:uuid:eece17de-77e8-4a55-9347-b6bab5724b9f</CompositionPlaylistId>
+        <ContentTitleText>TONEPLATES-SMPTE-ENCRYPTED_TST_F_XX-XX_ITL-TD_51-XX_2K_WOE_20111001_WOE_OV</ContentTitleText>
+        <ContentKeysNotValidBefore>2022-12-30T18:38:54+01:00</ContentKeysNotValidBefore>
+        <ContentKeysNotValidAfter>2023-01-19T21:02:54+01:00</ContentKeysNotValidAfter>
+        <AuthorizedDeviceInfo>
+          <DeviceListIdentifier>urn:uuid:a18090e5-a792-487c-8251-aa068814d89d</DeviceListIdentifier>
+          <DeviceListDescription>smpte-430-2.LEAF.NOT_FOR_PRODUCTION</DeviceListDescription>
+          <DeviceList>
+            <CertificateThumbprint>2jmj7l5rSw0yVb/vlWAYkK/YBwk=</CertificateThumbprint>
+          </DeviceList>
+        </AuthorizedDeviceInfo>
+        <KeyIdList>
+          <TypedKeyId>
+            <KeyType scope="http://www.smpte-ra.org/430-1/2006/KDM#kdm-key-type">MDIK</KeyType>
+            <KeyId>urn:uuid:4ac4f922-8239-4831-b23b-31426d0542c4</KeyId>
+          </TypedKeyId>
+          <TypedKeyId>
+            <KeyType scope="http://www.smpte-ra.org/430-1/2006/KDM#kdm-key-type">MDAK</KeyType>
+            <KeyId>urn:uuid:73baf5de-e195-4542-ab28-8a465f7d4079</KeyId>
+          </TypedKeyId>
+        </KeyIdList>
+        <ForensicMarkFlagList>
+          <ForensicMarkFlag>http://www.smpte-ra.org/430-1/2006/KDM#mrkflg-picture-disable</ForensicMarkFlag>
+          <ForensicMarkFlag>http://www.smpte-ra.org/430-1/2006/KDM#mrkflg-audio-disable</ForensicMarkFlag>
+        </ForensicMarkFlagList>
+      </KDMRequiredExtensions>
+    </RequiredExtensions>
+    <NonCriticalExtensions/>
+  </AuthenticatedPublic>
+  <AuthenticatedPrivate Id="ID_AuthenticatedPrivate">
+    <enc:EncryptedKey xmlns:enc="http://www.w3.org/2001/04/xmlenc#">
+      <enc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p">
+        <ds:DigestMethod xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+      </enc:EncryptionMethod>
+      <enc:CipherData>
+        <enc:CipherValue>NwvJymoLyUrKx6xszk01ARg6d1oPq/QGB+5By85bfdMuYLeojMvmiCcthCTZ+QBM
+xDcMLQemWj1GNfpLtbrf0szHz2AOR+fr0W07eUzQM/qyt8tvUYVfIsv8XBIsnPFV
+erlBxWG3sB0tkrK2Rn7pqRa6n/iMPbFKLkhSRp+vLzWab+4EJizchE4CfsKrL037
+lN5ztT06Gvm8a2AIFgSlORzjpzMMEGw8+LfgHzuTq0i7r85sKY8WwQJWYTXXSbKy
+sAMPxhBg1bwM6v43OSTmN5dmFZ8jCr+bk8tD1RJ+4akqgTSWHbu7k87zQh2VL82c
+yLU0t0C9+2I/3ofKJxjISQ==</enc:CipherValue>
+      </enc:CipherData>
+    </enc:EncryptedKey>
+    <enc:EncryptedKey xmlns:enc="http://www.w3.org/2001/04/xmlenc#">
+      <enc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p">
+        <ds:DigestMethod xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+      </enc:EncryptionMethod>
+      <enc:CipherData>
+        <enc:CipherValue>HuTaTYFJmJNo9z6+XbIiY6CwvAVDIRINP+Hodm68yCoPF64B5kuQ3NOq+6V2ejly
+EPK1Pr7MTBt/0LoUTCU0dquFp+GyIOPUk0FwCFQhvVZkS/ehyNSQx6jGL3tuDIM3
+Hp2GEp9T5uIyZzDyVho7KBuH0YIXvFOkB62qwBzSguKXQkvptGuRpH6UMp1F0yKy
+Cbej0FbVxg2i1JGEOzG3Y1DELsXVPX8+yexcw1V8/MGMdAWRKoWmtFnBIYvFMKyK
+0yQoTP5gcnR7vAN6BBBL3Q2gmqcSHU0IT2pTLGWNT7T4nwbhybtkjOKYXhVC6M4h
+ppjPZloHUIWAzx+wTVH3WQ==</enc:CipherValue>
+      </enc:CipherData>
+    </enc:EncryptedKey>
+  </AuthenticatedPrivate>
+  <ds:Signature>
+    <ds:SignedInfo>
+      <ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/>
+      <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+      <ds:Reference URI="#ID_AuthenticatedPublic">
+        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+        <ds:DigestValue>hKFqmH8PJ2nee0PLcRlOnK3sVIULreOjzKenqvPz7zs=</ds:DigestValue>
+      </ds:Reference>
+      <ds:Reference URI="#ID_AuthenticatedPrivate">
+        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+        <ds:DigestValue>Dh0DvCH7qEThW1UEoueCkI8IyzsebQ8EpjtCLtRGEu0=</ds:DigestValue>
+      </ds:Reference>
+    </ds:SignedInfo>
+    <ds:SignatureValue>K8lSyNZN+sGaJrJiZ4W3o7np9kF/hb/eYSq/QOxbWZ5H6VhrHxdBRCRrvkLHfvbq
+QLy4w+bPcYQeuyL9x0YuS1DEKdt2YC+m0D0rQPyO2TCU3MWimO5qT2PHXrikDFvw
+2Mus9/q7xX/vntXuNy2mu39QtB9ZCqAK26UW8Y1/bLpbVDGdoS+Cw+F4hKONuZz4
+BYGQdFFf8aZFMH/D/dgk6w2q/e+cmKHz4BsdR4npvbydEtBpnxcLCZxNOA+h7PBN
+izZgYVDfWlFGbrdN5xeQySAvPnwUYWUm38cZk8glb+VwbB7Hk5OC5s58RrVGAOVq
+SG+Tyni9Yjkltt4OZmDBzg==</ds:SignatureValue>
+    <ds:KeyInfo>
+      <ds:X509Data>
+        <ds:X509IssuerSerial>
+          <ds:X509IssuerName>dnQualifier=enjbKYhZ9JszBVjy71Lg9QrYmV4=,CN=.smpte-430-2.INTERMEDIATE.NOT_FOR_PRODUCTION,OU=example.org,O=example.org</ds:X509IssuerName>
+          <ds:X509SerialNumber>7</ds:X509SerialNumber>
+        </ds:X509IssuerSerial>
+        <ds:X509Certificate>MIIEezCCA2OgAwIBAgIBBzANBgkqhkiG9w0BAQsFADCBijEUMBIGA1UECgwLZXhh
+bXBsZS5vcmcxFDASBgNVBAsMC2V4YW1wbGUub3JnMTUwMwYDVQQDDCwuc21wdGUt
+NDMwLTIuSU5URVJNRURJQVRFLk5PVF9GT1JfUFJPRFVDVElPTjElMCMGA1UELhMc
+ZW5qYktZaFo5SnN6QlZqeTcxTGc5UXJZbVY0PTAeFw0yMjEyMjIyMDAyNTRaFw0z
+MjEyMTcyMDAyNTRaMIGEMRQwEgYDVQQKDAtleGFtcGxlLm9yZzEUMBIGA1UECwwL
+ZXhhbXBsZS5vcmcxLzAtBgNVBAMMJkNTLnNtcHRlLTQzMC0yLkxFQUYuTk9UX0ZP
+Ul9QUk9EVUNUSU9OMSUwIwYDVQQuExxNZWtJWEdCa1lkaDI4c2lNbm5GL1pzMkpl
+Szg9MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqiO7aIeoji20MEZM
+SeLDxBSOlVqVazaFf8ERReoLrB89/ema6J3ilRKjf7hQXL7XqeUIlAjthrI5Y9P9
+qjw/ZxkYwysrqCTiHN0P/KMs4T7M9QwCWgI8LqTsflpHyoESgjnlDjmEs/RVrC8I
+DL5/8VtvLukJAQo1zMXGyQp7K8njjmSQ2x8t1MmvqDhiipuh6wwBmsgMPB0nkRL+
+xNHMNvdGWnGlgrcb2gP8vMpwoDzQncEmMTbeFaLNHjZGxiGVR8g+LA5kJ4wFIgWQ
+51d4pGJy30U9kBfHY6twUQoQB6FoLfCXObotai5OnGxnzGJk8jm3h+IcK8c+t53Q
+utDDawIDAQABo4HvMIHsMAwGA1UdEwEB/wQCMAAwCwYDVR0PBAQDAgWgMB0GA1Ud
+DgQWBBQx6QhcYGRh2HbyyIyecX9mzYl4rzCBrwYDVR0jBIGnMIGkgBR6eNspiFn0
+mzMFWPLvUuD1CtiZXqGBiKSBhTCBgjEUMBIGA1UECgwLZXhhbXBsZS5vcmcxFDAS
+BgNVBAsMC2V4YW1wbGUub3JnMS0wKwYDVQQDDCQuc21wdGUtNDMwLTIuUk9PVC5O
+T1RfRk9SX1BST0RVQ1RJT04xJTAjBgNVBC4THENiRS8wVy9uWTJlSFplQVpsR2ov
+SXp5MlM0QT2CAQYwDQYJKoZIhvcNAQELBQADggEBAH3PT0PVG2KPiDXnQz4Nv3fS
+oxkkMCn7oCBxLEvalpWgr7xOHZUfNOCjkavFwpLBI0OSlzGKirdAP49VWcuyeiRm
+9tK0dPkhUdmUuQVZvOR+G3T5H68CD5A0b7ApqPJuFQlbQ6xCnzSr8K6MQko0FbI7
+8BeBCACMETXRzlSHayjkGiGsMjUbfpCWJvkuiTlQ0WBADd9RJAcRRlzTWOy33Zgh
+DhLNg1/lNboDQ83ye7pxiCxcIBaNXKvHXNuBXetkCo5px/DXsKv3wiIxA7NqyqGB
+qeuOvbIqgxm2B9LdmuDyK9cPyWLdFYxNVnZ4zQCy8IDgqiFOshQNkiPLUXOrrY4=</ds:X509Certificate>
+      </ds:X509Data>
+      <ds:X509Data>
+        <ds:X509IssuerSerial>
+          <ds:X509IssuerName>dnQualifier=CbE/0W/nY2eHZeAZlGj/Izy2S4A=,CN=.smpte-430-2.ROOT.NOT_FOR_PRODUCTION,OU=example.org,O=example.org</ds:X509IssuerName>
+          <ds:X509SerialNumber>6</ds:X509SerialNumber>
+        </ds:X509IssuerSerial>
+        <ds:X509Certificate>MIIEfzCCA2egAwIBAgIBBjANBgkqhkiG9w0BAQsFADCBgjEUMBIGA1UECgwLZXhh
+bXBsZS5vcmcxFDASBgNVBAsMC2V4YW1wbGUub3JnMS0wKwYDVQQDDCQuc21wdGUt
+NDMwLTIuUk9PVC5OT1RfRk9SX1BST0RVQ1RJT04xJTAjBgNVBC4THENiRS8wVy9u
+WTJlSFplQVpsR2ovSXp5MlM0QT0wHhcNMjIxMjIyMjAwMjU0WhcNMzIxMjE4MjAw
+MjU0WjCBijEUMBIGA1UECgwLZXhhbXBsZS5vcmcxFDASBgNVBAsMC2V4YW1wbGUu
+b3JnMTUwMwYDVQQDDCwuc21wdGUtNDMwLTIuSU5URVJNRURJQVRFLk5PVF9GT1Jf
+UFJPRFVDVElPTjElMCMGA1UELhMcZW5qYktZaFo5SnN6QlZqeTcxTGc5UXJZbVY0
+PTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALEsrMMpvcx0Hxj759vB
+Y156VXBRv2pgcwyKmtGSyFOleh3qoTqU6g2fM4T13sTFsc0EY7WQgvn0AmmM80Kh
+cT5uQpPt5Dcg21WfnKyfTxrf8kJI7MnmIETXcnAZ5FBng3quLReFQRE30D4nreFV
+FcBmwWe/aWFKymUep7sQYLtI8AZsM0qOo+Pa3ODbut2DD4ckr9h7mLxp2aJygCUV
+ZUarGtF9ZfqF9IZXoU6N7CqPl2+K6ENY1C5MPv6poTJ4bdfMhabW8/gBdRL4OXzV
+72ieW54Enb6vnfWDLRxkMfl+mmwivBRmHYGwtcj9DaJEYCs6BWJyMwna4uz9gE6K
+hV0CAwEAAaOB9TCB8jASBgNVHRMBAf8ECDAGAQH/AgECMAsGA1UdDwQEAwIBBjAd
+BgNVHQ4EFgQUenjbKYhZ9JszBVjy71Lg9QrYmV4wga8GA1UdIwSBpzCBpIAUCbE/
+0W/nY2eHZeAZlGj/Izy2S4ChgYikgYUwgYIxFDASBgNVBAoMC2V4YW1wbGUub3Jn
+MRQwEgYDVQQLDAtleGFtcGxlLm9yZzEtMCsGA1UEAwwkLnNtcHRlLTQzMC0yLlJP
+T1QuTk9UX0ZPUl9QUk9EVUNUSU9OMSUwIwYDVQQuExxDYkUvMFcvblkyZUhaZUFa
+bEdqL0l6eTJTNEE9ggEFMA0GCSqGSIb3DQEBCwUAA4IBAQALVLYESliIRMuT/Bus
+kzi/LLxK8s/7Veg6VPCBu/gVZz8ZqucAt45jkt+5EXOqb2ZlA4rrCOeisotYTC/F
+P5Bm+CKJVepBG6PMpCwNCzzw6nsfWjvtLh/F7Fqg+jCEK+Ka6PPCZkd+b3pd9MZL
+0xye6EF8M7XCrgqpERHOrmYe3S3fLXp9SEcXubdG0jcRWY71vX4BkNuGWMbbOX0w
+yuVUgZkoTq1ru9YuYcYvbCnDCugkdU3RFZkrVdu8kN511YBRuqvcILEOCsr8ZM0F
+02Th71I+8QyJnfrSmAp1TJ3I03ZxDTTXeKw1zaZqGWUQuIjbeUDDGo8uHoMtV60Q
+rKYh</ds:X509Certificate>
+      </ds:X509Data>
+      <ds:X509Data>
+        <ds:X509IssuerSerial>
+          <ds:X509IssuerName>dnQualifier=CbE/0W/nY2eHZeAZlGj/Izy2S4A=,CN=.smpte-430-2.ROOT.NOT_FOR_PRODUCTION,OU=example.org,O=example.org</ds:X509IssuerName>
+          <ds:X509SerialNumber>5</ds:X509SerialNumber>
+        </ds:X509IssuerSerial>
+        <ds:X509Certificate>MIIEdzCCA1+gAwIBAgIBBTANBgkqhkiG9w0BAQsFADCBgjEUMBIGA1UECgwLZXhh
+bXBsZS5vcmcxFDASBgNVBAsMC2V4YW1wbGUub3JnMS0wKwYDVQQDDCQuc21wdGUt
+NDMwLTIuUk9PVC5OT1RfRk9SX1BST0RVQ1RJT04xJTAjBgNVBC4THENiRS8wVy9u
+WTJlSFplQVpsR2ovSXp5MlM0QT0wHhcNMjIxMjIyMjAwMjU0WhcNMzIxMjE5MjAw
+MjU0WjCBgjEUMBIGA1UECgwLZXhhbXBsZS5vcmcxFDASBgNVBAsMC2V4YW1wbGUu
+b3JnMS0wKwYDVQQDDCQuc21wdGUtNDMwLTIuUk9PVC5OT1RfRk9SX1BST0RVQ1RJ
+T04xJTAjBgNVBC4THENiRS8wVy9uWTJlSFplQVpsR2ovSXp5MlM0QT0wggEiMA0G
+CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDbWZOdhP2gXvlIuQ3hshO+6rWLo6nw
+3lBZSWCk/cOo2kPx14hP6XGNtCKLlZ5EHOTl4WIcioZ0M1EpEiIv0qtLqvHE0xGA
+6oXTNk6dTBWWqewxZUabQzfvmlL6EjmupUcENjgXMX7ITOE7cJYRve2DqW7WZQdv
+tzQPUaMMFNBtbj3WbtMYpqFPGV97VTwTxNiz2eFufOTEghzyW0E0Tb4wOnmJde7x
+IBeLFCW84JQsHx2wvh/lw8KB7/BGMWndp/vcIgQPN+6DhXdgoqCp9LgSaVSAFsEW
+LFGcB2zWbuG0l0/TPbia9EQ1X6XyHK8AsMnzJ/OooFh3wU+WNQS5IVbtAgMBAAGj
+gfUwgfIwEgYDVR0TAQH/BAgwBgEB/wIBAzALBgNVHQ8EBAMCAQYwHQYDVR0OBBYE
+FAmxP9Fv52Nnh2XgGZRo/yM8tkuAMIGvBgNVHSMEgacwgaSAFAmxP9Fv52Nnh2Xg
+GZRo/yM8tkuAoYGIpIGFMIGCMRQwEgYDVQQKDAtleGFtcGxlLm9yZzEUMBIGA1UE
+CwwLZXhhbXBsZS5vcmcxLTArBgNVBAMMJC5zbXB0ZS00MzAtMi5ST09ULk5PVF9G
+T1JfUFJPRFVDVElPTjElMCMGA1UELhMcQ2JFLzBXL25ZMmVIWmVBWmxHai9Jenky
+UzRBPYIBBTANBgkqhkiG9w0BAQsFAAOCAQEAbjn7rg7MANHxF8TpMw6LfCK7p5qv
+sq5S0t7Uml+P/dawRcMnu22e2e9mgleYmZILYXv3pgUV51sxHeVJslHiDh/ni1B6
+CltNQ+v1DrIegEVeneMv1Ljr6WCYR3llN7p3RbandKbEB13tA5e6MajM7DXMVM8c
+rW9L1hJBkiWgWhOHUbtjBAA/SAfdyZ+lKWv6Hgc4qND9U6Vg1LcF1KfaZVdvoRJ7
+YAgdq3Y4SqKYWSl9wxBxYOIR0Lo6ZBo4hIabNAVdRdFNDVVJMa9nKl0lB0QNalbW
+YGYMYcyr5oaa349itnby6ejKQnyGL7agHtI5F6HkzK712MSF0tEVITu5pg==</ds:X509Certificate>
+      </ds:X509Data>
+    </ds:KeyInfo>
+  </ds:Signature>
+</DCinemaSecurityMessage>

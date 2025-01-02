@@ -1,0 +1,266 @@
+#
+#    Copyright (C) 2012-2020 Carl Hetherington <cth@carlh.net>
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program; if not, write to the Free Software
+#    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+#    In addition, as a special exception, the copyright holders give
+#    permission to link the code of portions of this program with the
+#    OpenSSL library under certain conditions as described in each
+#    individual source file, and distribute linked combinations
+#    including the two.
+#
+#    You must obey the GNU General Public License in all respects
+#    for all of the code used other than OpenSSL.  If you modify
+#    file(s) with this exception, you may extend this exception to your
+#    version of the file(s), but you are not obligated to do so.  If you
+#    do not wish to do so, delete this exception statement from your
+#    version.  If you delete this exception statement from all source
+#    files in the program, then also delete it here.
+#
+
+from waflib import TaskGen
+
+def build(bld):
+    source = """
+             array_data.cc
+             asset.cc
+             asset_map.cc
+             asset_factory.cc
+             asset_writer.cc
+             atmos_asset.cc
+             atmos_asset_writer.cc
+             bitstream.cc
+             certificate_chain.cc
+             certificate.cc
+             chromaticity.cc
+             colour_conversion.cc
+             combine.cc
+             content_kind.cc
+             cpl.cc
+             data.cc
+             dcp.cc
+             dcp_time.cc
+             decrypted_kdm.cc
+             decrypted_kdm_key.cc
+             encrypted_kdm.cc
+             exceptions.cc
+             file.cc
+             filesystem.cc
+             font_asset.cc
+             fsk.cc
+             gamma_transfer_function.cc
+             h_align.cc
+             identity_transfer_function.cc
+             interop_load_font_node.cc
+             interop_subtitle_asset.cc
+             j2k_transcode.cc
+             key.cc
+             language_tag.cc
+             local_time.cc
+             locale_convert.cc
+             metadata.cc
+             modified_gamma_transfer_function.cc
+             mono_picture_asset.cc
+             mono_picture_asset_writer.cc
+             mono_picture_frame.cc
+             mxf.cc
+             name_format.cc
+             object.cc
+             openjpeg_image.cc
+             picture_asset.cc
+             picture_asset_writer.cc
+             pkl.cc
+             rating.cc
+             raw_convert.cc
+             reel.cc
+             reel_asset.cc
+             reel_atmos_asset.cc
+             reel_closed_caption_asset.cc
+             reel_file_asset.cc
+             reel_interop_closed_caption_asset.cc
+             reel_interop_subtitle_asset.cc
+             reel_mono_picture_asset.cc
+             reel_picture_asset.cc
+             reel_markers_asset.cc
+             reel_smpte_closed_caption_asset.cc
+             reel_smpte_subtitle_asset.cc
+             reel_sound_asset.cc
+             reel_stereo_picture_asset.cc
+             reel_subtitle_asset.cc
+             ref.cc
+             rgb_xyz.cc
+             ruby.cc
+             s_gamut3_transfer_function.cc
+             search.cc
+             smpte_load_font_node.cc
+             smpte_subtitle_asset.cc
+             sound_asset.cc
+             sound_asset_writer.cc
+             sound_frame.cc
+             stereo_picture_asset.cc
+             stereo_picture_asset_writer.cc
+             stereo_picture_frame.cc
+             subtitle.cc
+             subtitle_asset.cc
+             subtitle_asset_internal.cc
+             subtitle_image.cc
+             subtitle_standard.cc
+             subtitle_string.cc
+             transfer_function.cc
+             types.cc
+             utc_offset.cc
+             util.cc
+             v_align.cc
+             verify.cc
+             verify_j2k.cc
+             version.cc
+             """
+
+    headers = """
+              array_data.h
+              asset.h
+              asset_list.h
+              asset_map.h
+              asset_reader.h
+              asset_writer.h
+              atmos_asset.h
+              atmos_asset_reader.h
+              atmos_asset_writer.h
+              atmos_frame.h
+              certificate_chain.h
+              certificate.h
+              chromaticity.h
+              colour_conversion.h
+              combine.h
+              compose.hpp
+              content_kind.h
+              cpl.h
+              crypto_context.h
+              data.h
+              dcp.h
+              dcp_assert.h
+              dcp_time.h
+              decrypted_kdm.h
+              decrypted_kdm_key.h
+              encrypted_kdm.h
+              equality_options.h
+              exceptions.h
+              file.h
+              filesystem.h
+              font_asset.h
+              frame.h
+              fsk.h
+              gamma_transfer_function.h
+              h_align.h
+              identity_transfer_function.h
+              interop_load_font_node.h
+              interop_subtitle_asset.h
+              j2k_transcode.h
+              key.h
+              language_tag.h
+              load_font_node.h
+              local_time.h
+              locale_convert.h
+              metadata.h
+              mono_picture_asset.h
+              mono_picture_asset_reader.h
+              mono_picture_asset_writer.h
+              mono_picture_frame.h
+              modified_gamma_transfer_function.h
+              mxf.h
+              name_format.h
+              object.h
+              openjpeg_image.h
+              picture_asset.h
+              picture_asset_writer.h
+              piecewise_lut.h
+              pkl.h
+              rating.h
+              raw_convert.h
+              rgb_xyz.h
+              reel.h
+              reel_asset.h
+              reel_atmos_asset.h
+              reel_closed_caption_asset.h
+              reel_file_asset.h
+              reel_interop_closed_caption_asset.h
+              reel_interop_subtitle_asset.h
+              reel_markers_asset.h
+              reel_mono_picture_asset.h
+              reel_picture_asset.h
+              reel_sound_asset.h
+              reel_smpte_closed_caption_asset.h
+              reel_smpte_subtitle_asset.h
+              reel_stereo_picture_asset.h
+              reel_subtitle_asset.h
+              ref.h
+              ruby.h
+              s_gamut3_transfer_function.h
+              scope_guard.h
+              search.h
+              smpte_load_font_node.h
+              smpte_subtitle_asset.h
+              sound_frame.h
+              sound_asset.h
+              sound_asset_reader.h
+              sound_asset_writer.h
+              stereo_picture_asset.h
+              stereo_picture_asset_reader.h
+              stereo_picture_asset_writer.h
+              stereo_picture_frame.h
+              subtitle.h
+              subtitle_asset.h
+              subtitle_image.h
+              subtitle_standard.h
+              subtitle_string.h
+              transfer_function.h
+              types.h
+              utc_offset.h
+              util.h
+              v_align.h
+              verify.h
+              verify_j2k.h
+              version.h
+              warnings.h
+              """
+
+    # Main library
+    if bld.env.STATIC:
+        obj = bld(features='cxx cxxstlib')
+    else:
+        obj = bld(features='cxx cxxshlib')
+    obj.name = 'libdcp%s' % bld.env.API_VERSION
+    obj.target = 'dcp%s' % bld.env.API_VERSION
+    obj.export_includes = ['.']
+    obj.uselib = 'BOOST_FILESYSTEM BOOST_SIGNALS2 BOOST_DATETIME OPENSSL SIGC++ LIBXML++ OPENJPEG CXML XMLSEC1 ASDCPLIB_CTH XERCES'
+    obj.source = source
+
+    # Library for gcov
+    if bld.is_defined('HAVE_GCOV'):
+        if bld.env.STATIC:
+            obj = bld(features='cxx cxxstlib')
+        else:
+            obj = bld(features='cxx cxxshlib')
+        obj.name = 'libdcp%s_gcov' % bld.env.API_VERSION
+        obj.target = 'dcp%s_gcov' % bld.env.API_VERSION
+        obj.export_includes = ['.']
+        obj.uselib = 'BOOST_FILESYSTEM BOOST_SIGNALS2 BOOST_DATETIME OPENSSL SIGC++ LIBXML++ OPENJPEG CXML XMLSEC1 ASDCPLIB_CTH XERCES'
+        obj.use = 'libkumu-libdcp%s libasdcp-libdcp%s' % (bld.env.API_VERSION, bld.env.API_VERSION)
+        obj.source = source
+        obj.cppflags = ['-fprofile-arcs', '-ftest-coverage', '-fno-inline', '-fno-default-inline', '-fno-elide-constructors', '-g', '-O0']
+
+    bld.install_files('${PREFIX}/include/libdcp%s/dcp' % bld.env.API_VERSION, headers)
+    if bld.env.STATIC:
+        bld.install_files('${PREFIX}/lib', 'libdcp%s.a' % bld.env.API_VERSION)

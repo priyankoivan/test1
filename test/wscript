@@ -1,0 +1,156 @@
+#
+#    Copyright (C) 2012-2021 Carl Hetherington <cth@carlh.net>
+#
+#    This file is part of libdcp.
+#
+#    libdcp is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    libdcp is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with libdcp.  If not, see <http://www.gnu.org/licenses/>.
+#
+#    In addition, as a special exception, the copyright holders give
+#    permission to link the code of portions of this program with the
+#    OpenSSL library under certain conditions as described in each
+#    individual source file, and distribute linked combinations
+#    including the two.
+#
+#    You must obey the GNU General Public License in all respects
+#    for all of the code used other than OpenSSL.  If you modify
+#    file(s) with this exception, you may extend this exception to your
+#    version of the file(s), but you are not obligated to do so.  If you
+#    do not wish to do so, delete this exception statement from your
+#    version.  If you delete this exception statement from all source
+#    files in the program, then also delete it here.
+#
+
+def configure(conf):
+    if conf.options.target_windows_64:
+        boost_lib_suffix = '-mt-x64'
+    elif conf.options.target_windows_32:
+        boost_lib_suffix = '-mt-x32'
+    else:
+        boost_lib_suffix = ''
+
+    conf.check_cxx(fragment="""
+                            #define BOOST_TEST_MODULE Config test\n
+                            #include <boost/test/unit_test.hpp>\n
+                            BOOST_AUTO_TEST_CASE(foo) {}
+                            """,
+                   msg='Checking for boost unit testing library',
+                   lib='boost_unit_test_framework%s' % boost_lib_suffix,
+                   uselib_store='BOOST_TEST')
+
+    conf.env.prepend_value('LINKFLAGS', '-Lsrc')
+
+def build(bld):
+    obj = bld(features='cxx cxxprogram')
+    obj.name   = 'tests'
+    obj.uselib = 'BOOST_TEST BOOST_FILESYSTEM BOOST_DATETIME OPENJPEG CXML XMLSEC1 SNDFILE OPENMP ASDCPLIB_CTH LIBXML++ OPENSSL XERCES DL'
+    obj.cppflags = ['-fno-inline', '-fno-elide-constructors', '-g', '-O0']
+    if bld.env['CXX_NAME'] == 'gcc':
+        obj.cppflags.append('-fno-default-inline')
+    if bld.is_defined('HAVE_GCOV'):
+        obj.use = 'libdcp%s_gcov' % bld.env.API_VERSION
+        obj.lib = ['gcov']
+        obj.cppflags.append('-ftest-coverage')
+        obj.cppflags.append('-fprofile-arcs')
+    else:
+        obj.use = 'libdcp%s' % bld.env.API_VERSION
+    obj.source = """
+                 asset_test.cc
+                 atmos_test.cc
+                 certificates_test.cc
+                 colour_test.cc
+                 colour_conversion_test.cc
+                 combine_test.cc
+                 cpl_test.cc
+                 cpl_metadata_test.cc
+                 cpl_sar_test.cc
+                 cpl_ratings_test.cc
+                 dcp_font_test.cc
+                 dcp_test.cc
+                 dcp_time_test.cc
+                 decryption_test.cc
+                 effect_test.cc
+                 encryption_test.cc
+                 exception_test.cc
+                 filesystem_test.cc
+                 fraction_test.cc
+                 frame_info_hash_test.cc
+                 gamma_transfer_function_test.cc
+                 h_align_test.cc
+                 interop_load_font_test.cc
+                 interop_subtitle_test.cc
+                 local_time_test.cc
+                 long_filenames_test.cc
+                 make_digest_test.cc
+                 markers_test.cc
+                 mca_test.cc
+                 kdm_test.cc
+                 key_test.cc
+                 language_tag_test.cc
+                 raw_convert_test.cc
+                 read_dcp_test.cc
+                 read_change_write_test.cc
+                 reel_asset_test.cc
+                 recovery_test.cc
+                 rgb_xyz_test.cc
+                 round_trip_test.cc
+                 scope_guard_test.cc
+                 shared_subtitle_test.cc
+                 smpte_load_font_test.cc
+                 smpte_subtitle_test.cc
+                 sound_asset_writer_test.cc
+                 sound_frame_test.cc
+                 stream_operators.cc
+                 sync_test.cc
+                 test.cc
+                 util_test.cc
+                 utf8_test.cc
+                 v_align_test.cc
+                 verify_test.cc
+                 """
+    obj.target = 'tests'
+    obj.install_path = ''
+
+    obj = bld(features='cxx cxxprogram')
+    obj.name   = 'subs_in_out'
+    obj.uselib = 'BOOST_TEST BOOST_FILESYSTEM OPENJPEG CXML OPENMP ASDCPLIB_CTH XMLSEC1 OPENSSL DL LIBXML++'
+    obj.cppflags = ['-fno-inline', '-fno-elide-constructors', '-g', '-O0']
+    if bld.env['CXX_NAME'] == 'gcc':
+        obj.cppflags.append('-fno-default-inline')
+    if bld.is_defined('HAVE_GCOV'):
+        obj.use = 'libdcp%s_gcov' % bld.env.API_VERSION
+        obj.lib = ['gcov']
+        obj.cppflags.append('-ftest-coverage')
+        obj.cppflags.append('-fprofile-arcs')
+    else:
+        obj.use = 'libdcp%s' % bld.env.API_VERSION
+    obj.source = 'subs_in_out.cc'
+    obj.target = 'subs_in_out'
+    obj.install_path = ''
+
+    obj = bld(features='cxx cxxprogram')
+    obj.name   = 'rewrite_subs'
+    obj.uselib = 'BOOST_TEST BOOST_FILESYSTEM OPENJPEG CXML OPENMP ASDCPLIB_CTH XMLSEC1 OPENSSL DL LIBXML++'
+    obj.cppflags = ['-fno-inline', '-fno-elide-constructors', '-g', '-O0']
+    if bld.env['CXX_NAME'] == 'gcc':
+        obj.cppflags.append('-fno-default-inline')
+    if bld.is_defined('HAVE_GCOV'):
+        obj.use = 'libdcp%s_gcov' % bld.env.API_VERSION
+        obj.lib = ['gcov']
+        obj.cppflags.append('-ftest-coverage')
+        obj.cppflags.append('-fprofile-arcs')
+    else:
+        obj.use = 'libdcp%s' % bld.env.API_VERSION
+    obj.source = 'rewrite_subs.cc'
+    obj.target = 'rewrite_subs'
+    obj.install_path = ''

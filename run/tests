@@ -1,0 +1,183 @@
+#!/bin/bash
+#
+# Run our test suite.
+
+# Private test data; this is stuff that is non-distributable
+private=../libdcp-test-private
+# Work directory
+work=build/test
+# Path to tools
+dcpinfo=build/tools/dcpinfo
+dcpverify=build/tools/dcpverify
+
+type=""
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -e)
+        environment=$2
+        shift
+        shift
+        ;;
+        --debug)
+        type="debug"
+        shift
+        ;;
+        --valgrind)
+        type="valgrind"
+        shift
+        ;;
+        --callgrind)
+        type="callgrind"
+        shift
+        ;;
+        *)
+        break
+        ;;
+    esac
+done
+
+export LD_LIBRARY_PATH=build/src:/usr/local/lib:/usr/local/lib64:$LD_LIBRARY_PATH
+# SIP stops this being passed in from the caller's environment
+export DYLD_LIBRARY_PATH=$environment/x86_64/10.10/lib:/Users/ci/workspace/lib
+export LIBDCP_RESOURCES=.
+
+# Make sure we have the required tools
+for c in xmlsec1 xmllint; do
+  hash $c 2>/dev/null || { echo >&2 "$c required but not found; aborting"; exit 1; }
+done
+
+echo "--- Unit tests"
+
+# Run the unit tests in test/
+if [ "$type" == "debug" ]; then
+    gdb --args $work/tests $private $*
+elif [ "$type" == "valgrind" ]; then
+    valgrind --tool="memcheck" $work/tests $private $*
+elif [ "$type" == "callgrind" ]; then
+    valgrind --tool="callgrind" $work/tests $private $*
+else
+    $work/tests $* -- $private
+    if [ "$?" != "0" ]; then
+	echo "FAIL: unit tests"
+        exit 1
+    fi
+fi
+
+if [ "$*" != "" ]; then
+    echo "Skipping post-test checks as not all unit tests were run."
+    exit 0
+fi
+
+echo "--- Other tests"
+
+# Check the DCP written by dcp_test1
+diff -ur test/ref/DCP/dcp_test1 $work/DCP/dcp_test1
+if [ "$?" != "0" ]; then
+    echo "FAIL: files differ"
+    exit 1
+fi
+
+# Check the DCP written by dcp_test2
+diff -ur test/ref/DCP/dcp_test2 $work/DCP/dcp_test2
+if [ "$?" != "0" ]; then
+    echo "FAIL: files differ"
+    exit 1
+fi
+
+# Check the DCP written by dcp_test5
+diff -ur test/ref/DCP/dcp_test5 $work/DCP/dcp_test5
+if [ "$?" != "0" ]; then
+    echo "FAIL: files differ"
+    exit 1
+fi
+
+# Check the DCP written by dcp_test7
+diff -ur test/ref/DCP/dcp_test7 $work/DCP/dcp_test7
+if [ "$?" != "0" ]; then
+    echo "FAIL: files differ"
+    exit 1
+fi
+
+# Check the DCP written by encryption_test
+diff -ur test/ref/DCP/encryption_test $work/DCP/encryption_test
+if [ "$?" != "0" ]; then
+    echo "FAIL: files differ"
+    exit 1
+fi
+
+# Everything beyond this point needs $private to exist
+if [ ! -e "$private/info.log" ]; then
+    echo ""
+    echo "Private data not found: some tests will not run."
+    exit 1
+fi
+
+# Run dcpinfo on all the DCPs in private/metadata, writing $work/info.log
+# This writes details of the CPLs and all subtitle details, so it checks
+# if the code is reading subtitle files correctly.
+rm -f $work/info.log
+for d in `find $private/metadata -mindepth 1 -maxdepth 1 -type d | sort -f -d`; do
+    if [ `basename $d` != ".git" ]; then
+        $dcpinfo --ignore-missing-assets -s $d >> $work/info.log
+        if [ "$?" != "0" ]; then
+            echo "FAIL: dcpinfo failed for $d"
+            exit 1
+        fi
+    fi
+done
+
+# Run dcpverify on all the DCPs in private/metadata
+for d in `find $private/metadata -mindepth 1 -maxdepth 1 -type d | sort -f -d`; do
+    if [ `basename $d` != ".git" ]; then
+        $dcpverify --ignore-missing-assets --ignore-bv21-smpte -q $d
+        if [ "$?" != "0" ]; then
+            echo "FAIL: dcpverify failed for $d"
+            exit 1
+        fi
+    fi
+done
+
+# Check info.log is what it should be
+diff -q $work/info.log $private/info.log
+if [ "$?" != "0" ]; then
+    echo "FAIL: dcpinfo output incorrect"
+    exit 1
+fi
+
+# Copy $private/metadata into build/metadata then re-write the subtitles
+# of every DCP using $work/rewrite_subs.  This tests round-trip of
+# subtitle reading/writing.
+rm -f $work/info2.log
+rm -rf $work/private
+mkdir $work/private
+cp -r $private/metadata $work/private/
+for d in `find $work/private/metadata -mindepth 1 -maxdepth 1 -type d | sort -f -d`; do
+    if [ `basename $d` != ".git" ]; then
+        $work/rewrite_subs $d
+        $dcpinfo --ignore-missing-assets -s $d >> $work/info2.log
+    fi
+done
+
+# Fudge the output
+sed -i -e "s/DCP: build\/test/DCP: test/g" $work/info2.log
+
+# And check it
+diff -q $work/info2.log $private/info2.log
+if [ "$?" != "0" ]; then
+    echo "FAIL: dcpinfo output from rewrite incorrect"
+    exit 1
+fi
+
+# Dump the subs of JourneyToJah... (which has MXF-wrapped SMPTE subtitles)
+# and check that they are right
+$dcpinfo -s $private/data/JourneyToJah_TLR-1_F_EN-DE-FR_CH_51_2K_LOK_20140225_DGL_SMPTE_OV >> $work/jah.log
+
+# Parse some problematic subs and check that we get it right
+build/test/subs_in_out $private/TunaBoat_Icelandic_Reel1_V1_8sec.xml > $work/tuna.xml
+diff -q $private/TunaBoat_Icelandic_Reel1_V1_8sec.parsed.xml $work/tuna.xml
+if [ "$?" != "0" ]; then
+    echo "FAIL: output of parse check 1 invalid"
+    exit 1
+fi
+
+echo "PASS"

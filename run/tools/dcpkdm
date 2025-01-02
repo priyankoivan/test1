@@ -1,0 +1,16 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+top=$DIR/../..
+
+export LD_LIBRARY_PATH=build/src:build/asdcplib/src:/home/c.hetherington/lib:$LD_LIBRARY_PATH
+export LIBDCP_RESOURCES=.
+if [ "$1" == "--debug" ]; then
+    shift
+    gdb --args $top/build/tools/dcpkdm "$@"
+elif [ "$1" == "--valgrind" ]; then
+    shift
+    valgrind --tool="memcheck" --leak-check=full --show-reachable=yes $top/build/tools/dcpkdm "$@"
+else
+    $top/build/tools/dcpkdm "$@"
+fi
