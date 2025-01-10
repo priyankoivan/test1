@@ -1,0 +1,91 @@
+#
+#    Copyright (C) 2012-2022 Carl Hetherington <cth@carlh.net>
+#
+#    This file is part of libdcp.
+#
+#    libdcp is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    libdcp is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with libdcp.  If not, see <http://www.gnu.org/licenses/>.
+#
+#    In addition, as a special exception, the copyright holders give
+#    permission to link the code of portions of this program with the
+#    OpenSSL library under certain conditions as described in each
+#    individual source file, and distribute linked combinations
+#    including the two.
+#
+#    You must obey the GNU General Public License in all respects
+#    for all of the code used other than OpenSSL.  If you modify
+#    file(s) with this exception, you may extend this exception to your
+#    version of the file(s), but you are not obligated to do so.  If you
+#    do not wish to do so, delete this exception statement from your
+#    version.  If you delete this exception statement from all source
+#    files in the program, then also delete it here.
+#
+
+import os
+import shutil
+
+def dependencies(target, options):
+    return (('libcxml', 'v0.17.11'), ('openjpeg', '925ca5192bb16d4f58a6fddc8b1623eced7f0203'), ('asdcplib', '8a4a2f25cac0c58aac1d4267facab20e5ec3b57f'))
+
+def build(target, options):
+    cmd = './waf configure --disable-examples --disable-dumpimage --disable-benchmarks --prefix=%s' % target.directory
+    if target.platform == 'linux':
+        cmd += ' --static'
+        if target.distro != 'ubuntu' or not target.version in ('16.04', '22.04'):
+            # We only build tests on Ubuntu 16.04 and 22.04
+            cmd += ' --disable-tests'
+        if target.distro == 'ubuntu' and target.version == '16.04':
+            cmd += ' --static-boost'
+    elif target.platform == 'windows':
+        cmd += f' --target-windows-{target.bits}'
+
+    if target.debug:
+        cmd += ' --enable-debug'
+
+    target.command(cmd)
+    target.command('./waf build install')
+
+def package(target, version):
+    if target.platform == 'windows':
+        d = 'build/libdcp-%s' % version
+        os.mkdir(d)
+        for f in ['asdcp-carl.dll', 'cxml-0.dll', 'dcp-1.0.dll', 'kumu-carl.dll', 'libopenjp2.dll', 'dcpinfo.exe']:
+            shutil.copyfile('%s/bin/%s' % (target.directory, f), os.path.join(d, f))
+
+        if target.bits == 32:
+            shutil.copyfile('%s/bin/libgcc_s_sjlj-1.dll' % target.windows_prefix, os.path.join(d, 'libgcc_s_sjlj-1.dll'))
+        else:
+            shutil.copyfile('%s/bin/libgcc_s_seh-1.dll' % target.windows_prefix, os.path.join(d, 'libgcc_s_seh-1.dll'))
+
+        for f in ['libstdc++-6.dll', 'libboost_filesystem-mt.dll', 'libboost_system-mt.dll', 'libeay32.dll', 'libglibmm-2.4-1.dll', 'libxml++-2.6-2.dll',
+                  'libxml2-2.dll', 'libxmlsec1-openssl.dll', 'libxmlsec1.dll', 'zlib1.dll', 'libglib-2.0-0.dll', 'libgmodule-2.0-0.dll', 'libgobject-2.0-0.dll',
+                  'libsigc-2.0-0.dll', 'libiconv-2.dll', 'liblzma-5.dll', 'libxslt-1.dll', 'libintl-8.dll', 'libpcre-1.dll', 'libffi-6.dll']:
+            shutil.copyfile('%s/bin/%s' % (target.windows_prefix, f), os.path.join(d, f))
+        zip = 'libdcp-%s-windows-%d.zip' % (version, target.bits)
+        target.command('cd build && zip -9 -r %s libdcp-%s' % (zip, version))
+        return os.path.abspath('build/%s' % zip)
+
+def make_doxygen(target):
+    os.makedirs('build/doc')
+    target.command('doxygen')
+    return os.path.abspath('build/doc/html')
+
+def test(target, options, test):
+    target.set('LC_ALL', 'C')
+    cmd = 'run\\tests ' if target.platform == 'windows' else 'run/tests '
+    if target.environment_prefix:
+        cmd += '-e %s' % target.environment_prefix
+    if test is not None:
+        cmd += '-t %s' % test
+    target.command(cmd)
+

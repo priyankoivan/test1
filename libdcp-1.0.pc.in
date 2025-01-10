@@ -1,0 +1,10 @@
+prefix=@prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: libdcp
+Description: DCP reading and writing library
+Version: @version@
+Requires: openssl libxml++-2.6 xmlsec1 libasdcp-carl xerces-c
+Libs: @libs@
+Cflags: -I${includedir}

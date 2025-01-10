@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompositionPlaylist xmlns="http://www.smpte-ra.org/schemas/429-7/2006/CPL">
+  <Id>urn:uuid:6affb8ee-0020-4dff-a53c-17652f6358ab</Id>
+  <AnnotationText>A Test DCP</AnnotationText>
+  <IssueDate>2012-07-17T04:45:18+00:00</IssueDate>
+  <Issuer>OpenDCP 0.0.25</Issuer>
+  <Creator>OpenDCP 0.0.25</Creator>
+  <ContentTitleText>A Test DCP</ContentTitleText>
+  <ContentKind>feature</ContentKind>
+  <ContentVersion>
+    <Id>urn:uri:81fb54df-e1bf-4647-8788-ea7ba154375b_2012-07-17T04:45:18+00:00</Id>
+    <LabelText>81fb54df-e1bf-4647-8788-ea7ba154375b_2012-07-17T04:45:18+00:00</LabelText>
+  </ContentVersion>
+  <RatingList/>
+  <ReelList>
+    <Reel>
+      <Id>urn:uuid:8577c7c0-be29-4eb5-a449-1e3870a42bbd</Id>
+      <AssetList>
+        <MainPicture>
+          <Id>urn:uuid:5407b210-4441-4e97-8b16-8bdc7c12da54</Id>
+          <EditRate>24 1</EditRate>
+          <IntrinsicDuration>24</IntrinsicDuration>
+          <EntryPoint>0</EntryPoint>
+          <Duration>24</Duration>
+          <Hash>o3VmpdFsNUgF11oadcaGJ/IfO0M=</Hash>
+          <FrameRate>24 1</FrameRate>
+          <ScreenAspectRatio>1998 1080</ScreenAspectRatio>
+        </MainPicture>
+        <MainSound>
+          <Id>urn:uuid:97f0f352-5b77-48ee-a558-9df37717f4fa</Id>
+          <EditRate>24 1</EditRate>
+          <IntrinsicDuration>24</IntrinsicDuration>
+          <EntryPoint>0</EntryPoint>
+          <Duration>24</Duration>
+          <Hash>l+XLgxe2fMZDgY+0QYzDfGhvTQM=</Hash>
+        </MainSound>
+        <axd:AuxData xmlns:axd="http://www.dolby.com/schemas/2012/AD">
+          <Id>urn:uuid:b68febcc-5ddf-489a-84a7-924f29fa2afd</Id>
+          <EditRate>24 1</EditRate>
+          <IntrinsicDuration>1489</IntrinsicDuration>
+          <EntryPoint>0</EntryPoint>
+          <Duration>1489</Duration>
+          <Hash>jo8pQSebhScPN4EVvvpIUWRrDeM=</Hash>
+          <axd:DataType>urn:smpte:ul:060e2b34.04010105.0e090604.00000000</axd:DataType>
+        </axd:AuxData>
+      </AssetList>
+    </Reel>
+  </ReelList>
+</CompositionPlaylist>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompositionPlaylist xmlns="http://www.digicine.com/PROTO-ASDCP-CPL-20040511#">
+  <Id>urn:uuid:6affb8ee-0020-4dff-a53c-17652f6358ab</Id>
+  <AnnotationText>A Test DCP</AnnotationText>
+  <IssueDate>2012-07-17T04:45:18+00:00</IssueDate>
+  <Issuer>OpenDCP 0.0.25</Issuer>
+  <Creator>OpenDCP 0.0.25</Creator>
+  <ContentTitleText>A Test DCP</ContentTitleText>
+  <ContentKind>trailer</ContentKind>
+  <ContentVersion>
+    <Id>urn:uuid:75ac29aa-42ac-1234-ecae-49251abefd11</Id>
+    <LabelText>content-version-label-text</LabelText>
+  </ContentVersion>
+  <RatingList/>
+  <ReelList>
+    <Reel>
+      <Id>urn:uuid:d1102bfd-65c2-465c-ab33-200ace46fcf5</Id>
+      <AssetList>
+        <MainMarkers>
+          <Id>urn:uuid:3b198cbc-c1d2-4410-805c-397b6fea0297</Id>
+          <EditRate>24 1</EditRate>
+          <IntrinsicDuration>24</IntrinsicDuration>
+          <MarkerList>
+            <Marker>
+              <Label>FFOC</Label>
+              <Offset>1</Offset>
+            </Marker>
+            <Marker>
+              <Label>LFOC</Label>
+              <Offset>23</Offset>
+            </Marker>
+          </MarkerList>
+        </MainMarkers>
+        <MainPicture>
+          <Id>urn:uuid:5407b210-4441-4e97-8b16-8bdc7c12da54</Id>
+          <EditRate>24 1</EditRate>
+          <IntrinsicDuration>24</IntrinsicDuration>
+          <EntryPoint>0</EntryPoint>
+          <Duration>24</Duration>
+          <Hash>wUmt8G+cFFKMGt0ueS9+F1S4uhc=</Hash>
+          <FrameRate>24 1</FrameRate>
+          <ScreenAspectRatio>1.85</ScreenAspectRatio>
+        </MainPicture>
+        <MainSound>
+          <Id>urn:uuid:97f0f352-5b77-48ee-a558-9df37717f4fa</Id>
+          <EditRate>24 1</EditRate>
+          <IntrinsicDuration>24</IntrinsicDuration>
+          <EntryPoint>0</EntryPoint>
+          <Duration>24</Duration>
+          <Hash>KcJb7S2K5cNm8RG4kfQD5FTeS0A=</Hash>
+        </MainSound>
+      </AssetList>
+    </Reel>
+  </ReelList>
+</CompositionPlaylist>
